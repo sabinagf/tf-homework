@@ -7,25 +7,6 @@ terraform {
     }
   }
 }
-required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-
- required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
-# Configure the AWS Provider
-provider "aws" {
-  region = "us-east-1"
-}
 
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -45,18 +26,9 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
+  instance_type = "t3.micro"
 
   tags = {
-    Name = var.name
+    Name = "HelloWorld"
   }
-}
-
-variable "instance_type" {
-  type = string
-  default = "t3.micro"
-}
-
-variable "name" {
-  type = string
 }
