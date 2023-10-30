@@ -1,30 +1,10 @@
 terraform {
-  cloud {
-    organization = "terraform_class990"
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "company"
 
     workspaces {
-      name = "customers-apple"
-    }
-  }
-}
-
-
-terraform {
-  cloud {
-    organization = "terraform_class990"
-
-    workspaces {
-      name = "customers-google"
-    }
-  }
-
-
-  terraform {
-  cloud {
-    organization = "terraform_class990"
-
-    workspaces {
-      name = "customers-twitter"
+      prefix = "customers"
     }
   }
 }
